@@ -33,6 +33,7 @@ Enemy.prototype.update = function(dt) {
   let bugDown = this.y + 50;
   if (bugLeft < player.x && bugRight > player.x && bugUp < player.y && bugDown > player.y) {
     player.reset();
+    alert('You have been hit!');
     console.log('You have been hit!');
   }
 };
@@ -75,7 +76,7 @@ Player.prototype.handleInput = function(key) {
     }
   }
   else if (key == 'right') {
-    if (this.x <= this.h*5) {
+    if (this.x <= this.h*3) {
       // console.log('pressed right!');
       this.x += this.h;
     }
