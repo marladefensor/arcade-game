@@ -29,9 +29,9 @@ Enemy.prototype.update = function(dt) {
   // if enemy bug touches player, the player is reset
   let bugLeft = this.x - 50;
   let bugRight = this.x + 50;
-  let bugUp = this.y + 35;
-  let bugDown = this.y - 35;
-  if (player.x < bugLeft && player.x > bugRight && player.y < bugUp && player.y > bugDown) {
+  let bugUp = this.y - 50;
+  let bugDown = this.y + 50;
+  if (bugLeft < player.x && bugRight > player.x && bugUp < player.y && bugDown > player.y) {
     player.reset();
     console.log('You have been hit!');
   }
@@ -66,7 +66,7 @@ Player.prototype.render = function() {
 // moves player depending on key
 Player.prototype.handleInput = function(key) {
   if (key == 'left') {
-    console.log('pressed left!');
+    // console.log('pressed left!');
     if (this.x >= this.h) {
       this.x -= this.h;
     }
@@ -76,7 +76,7 @@ Player.prototype.handleInput = function(key) {
   }
   else if (key == 'right') {
     if (this.x <= this.h*5) {
-      console.log('pressed right!');
+      // console.log('pressed right!');
       this.x += this.h;
     }
     else {
@@ -84,14 +84,15 @@ Player.prototype.handleInput = function(key) {
     }
   }
   else if (key == 'up') {
-    console.log('pressed up!');
+    // console.log('pressed up!');
     this.y -= this.v;
     if (this.y < 0) {
       this.reset();
+      alert('You win!');
     }
   }
   else if (key == 'down') {
-    console.log('pressed down!');
+    // console.log('pressed down!');
     if (this.y <= this.v*4) {
       this.y += this.v;
     }
